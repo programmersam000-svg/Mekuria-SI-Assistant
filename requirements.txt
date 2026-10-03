@@ -1,0 +1,21 @@
+# ============================================
+# Mekuria AI Assistant - Dependencies
+# ============================================
+# Install with: pip install -r requirements.txt
+
+# --- LLM Brain ---
+google-genai>=1.0.0          # Google Gemini API client
+
+# --- Speech-to-Text (Hearing) ---
+faster-whisper>=1.0.0        # Local Whisper STT engine
+
+# --- Text-to-Speech (Speaking) ---
+edge-tts>=6.1.0              # Microsoft Edge neural TTS (free)
+
+# --- Audio Capture & Processing ---
+sounddevice>=0.4.6           # Real-time microphone capture
+numpy>=1.24.0                # Audio buffer math
+
+# --- Utilities ---
+python-dotenv>=1.0.0         # Load .env secrets
+rich>=13.0.0                 # Beautiful terminal output

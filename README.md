@@ -7,46 +7,34 @@
 ## 🏛️ Comprehensive 51-Pillar Architecture
 
 ```mermaid
-flowchart TD
-    subgraph UI ["💻 Interfaces"]
-        CLI["CLI Command Center"]
-        VOICE["🎤 Voice Assistant"]
-        HUD["📊 Developer Mission Control"]
-    end
+graph TD
+    CLI["CLI Command Center"] --> ORCH["Central Orchestrator"]
+    VOICE["Voice Assistant"] --> ORCH
+    HUD["Developer Mission Control"] --> ORCH
 
-    subgraph Core ["🧠 Core Subsystem"]
-        ORCH["Central Orchestrator"]
-        MEM["Multi-Tier SQLite Memory"]
-        SEC["Security Center & Least-Privilege"]
-        ROUTER["Model Routing & Cost Control"]
-        STATE["Task Checkpoint & Crash Recovery"]
-        STOP["🛑 Emergency Stop ('STOP MEKURIA')"]
-    end
+    ORCH --> MEM["SQLite Memory"]
+    ORCH --> SEC["Security Center"]
+    ORCH --> ROUTER["Model Router"]
+    ORCH --> STATE["Task Recovery"]
+    ORCH --> STOP["Emergency Stop"]
 
-    subgraph MultiAgent ["👥 Specialized Multi-Agent Network"]
-        TERM["Terminal & Shell Agent"]
-        TECH["Windows Diagnostics Technician"]
-        COMP["Computer & Screen Operator"]
-        DEV["Software Engineer (Web/App/Bot)"]
-        BUG["Advanced Debugger & Patch Engine"]
-        RES["Deep Research Engine"]
-        FILE["File Manager & Doc Intelligence"]
-        TEST["Verification & Testing Agent"]
-        AUTO["Automation & Reminders Agent"]
-        PROJ["Project Manager & Milestone Tracker"]
-        TUTOR["Tutor, Career & Data Analyst"]
-        WEB["Browser & Form Automation"]
-    end
+    ORCH --> TERM["Terminal Agent"]
+    ORCH --> TECH["Windows Technician"]
+    ORCH --> COMP["Computer Operator"]
+    ORCH --> DEV["Software Engineer"]
+    ORCH --> BUG["Debugger Agent"]
+    ORCH --> RES["Deep Research"]
+    ORCH --> FILE["File Manager"]
+    ORCH --> TEST["Testing Agent"]
+    ORCH --> AUTO["Automation Agent"]
+    ORCH --> PROJ["Project Manager"]
+    ORCH --> TUTOR["Tutor and Career"]
+    ORCH --> WEB["Browser Agent"]
 
-    subgraph Skills ["🧩 Extensible Plugin / Skill Subsystem"]
-        SM["Dynamic Skill Registry"]
-        PLUGINS["Weather / Wikipedia / News / Screencap / Telemetry"]
-    end
-
-    UI --> ORCH
-    ORCH --> Core
-    ORCH --> MultiAgent
-    MultiAgent --> Skills
+    TERM --> SKILLS["Skill Plugins Registry"]
+    DEV --> SKILLS
+    RES --> SKILLS
+    FILE --> SKILLS
 ```
 
 ---

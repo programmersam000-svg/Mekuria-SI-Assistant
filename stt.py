@@ -20,8 +20,6 @@ if sys.platform == "win32":
         pass
 
 import numpy as np
-import sounddevice as sd
-from faster_whisper import WhisperModel
 from rich.console import Console
 
 import config
@@ -29,10 +27,10 @@ import config
 console = Console()
 
 # ── Lazy-loaded singleton ─────────────────────────────────────────
-_model: Optional[WhisperModel] = None
+_model = None
 
 
-def _get_model() -> WhisperModel:
+def _get_model():
     """Lazy-initialize the Whisper model on first use."""
     global _model
     if _model is None:
@@ -40,6 +38,7 @@ def _get_model() -> WhisperModel:
             f"[cyan]Loading Whisper model '[bold]{config.WHISPER_MODEL_SIZE}[/bold]' "
             f"on {config.WHISPER_DEVICE}...[/cyan]"
         )
+        from faster_whisper import WhisperModel
         _model = WhisperModel(
             config.WHISPER_MODEL_SIZE,
             device=config.WHISPER_DEVICE,
@@ -57,6 +56,7 @@ def record_audio() -> np.ndarray:
 
     Returns a 1-D float32 NumPy array of audio samples at 16 kHz.
     """
+    import sounddevice as sd
     console.print("[green]Listening... speak now.[/green]")
 
     frames: list = []

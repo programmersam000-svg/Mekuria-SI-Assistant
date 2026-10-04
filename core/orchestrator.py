@@ -41,6 +41,7 @@ class Orchestrator:
             "automation": agents.automation_agent,
             "tutor": agents.tutor_career_agent,
             "browser": agents.web_browser_agent,
+            "amharic": agents.amharic_tutor_agent,
         }
 
     def understand_and_plan(self, user_goal: str) -> List[Dict[str, Any]]:
@@ -50,6 +51,16 @@ class Orchestrator:
         """
         lower = user_goal.lower().strip()
         plan = []
+
+        # 0. Amharic Tutoring & Language Goals
+        if any(k in user_goal for k in ["አማርኛ", "ፊደል", "ሰዋሰው", "ትምህርት", "አስተምረኝ", "ፈተና"]) or any(k in lower for k in ["amharic", "fidel", "ethiopian"]):
+            plan.append({
+                "step": 1,
+                "agent": "amharic",
+                "action": "amharic_tutoring",
+                "description": f"Deliver personalized Amharic language instruction: {user_goal}"
+            })
+            return plan
 
         # 1. Research Goals
         if any(k in lower for k in ["research", "who is", "scholarship", "compare", "university"]):

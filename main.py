@@ -108,6 +108,21 @@ def handle_personal_commands(user_input: str) -> str | None:
         ModeManager.set_mode(OperatingMode.AGENT)
         return "Work mode activated. Launched development environment and set AGENT mode."
 
+    # 6. Language Switching Commands (Req 96, 99)
+    if "switch to amharic" in lower or "አማርኛ ብቻ" in user_input or "በአማርኛ አናግረኝ" in user_input:
+        config.TTS_VOICE = "am-ET-AmehaNeural"
+        config.STT_LANGUAGE = "am"
+        return "ወደ አማርኛ ቋንቋ ተቀይሯል። አሁን በአማርኛ ማውራት ይችላሉ።"
+
+    if "switch to english" in lower or "english only" in lower:
+        config.TTS_VOICE = "en-GB-RyanNeural"
+        config.STT_LANGUAGE = "en"
+        return "Switched voice and speech recognition to English."
+
+    # 7. Amharic Greetings
+    if user_input.strip() in ("ሰላም", "ሰላም መኩሪያ", "ሰላም ነው", "እንዴት ነህ", "እንዴት ነሽ"):
+        return "ሰላም! እንዴት ነህ? ዛሬ ምን ልርዳህ?"
+
     return None
 
 def process_command(user_input: str) -> str:

@@ -40,6 +40,15 @@ class SkillManager:
         self.register_skill("news", "Fetch top world & tech news headlines", tools.get_news_headlines)
         self.register_skill("calculator", "Evaluate safe mathematical formulas", tools.calculate_math)
         self.register_skill("telemetry", "Collect real-time CPU/RAM/Disk metrics", tools.get_system_telemetry)
+        
+        # Amharic Language & Tutoring Skills
+        try:
+            import amharic
+            self.register_skill("amharic_lesson", "Generate structured 15-minute Amharic lesson", amharic.amharic_teacher.generate_daily_lesson)
+            self.register_skill("fidel", "Explain Ethiopian Fidel families and orders", amharic.get_fidel_lesson)
+            self.register_skill("amharic_coding", "Explain programming concepts in Amharic", amharic.explain_coding_concept)
+        except Exception:
+            pass
 
     def get_skills_list(self) -> Dict[str, str]:
         """Return dictionary of installed skill names and descriptions."""

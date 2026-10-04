@@ -15,6 +15,7 @@ from agents.project_manager import project_manager
 from agents.automation_agent import automation_agent
 from agents.tutor_career_agent import tutor_career_agent
 from agents.web_browser_agent import web_browser_agent
+from agents.amharic_tutor_agent import amharic_tutor_agent
 
 __all__ = [
     "BaseAgent",
@@ -30,4 +31,5 @@ __all__ = [
     "automation_agent",
     "tutor_career_agent",
     "web_browser_agent",
+    "amharic_tutor_agent",
 ]

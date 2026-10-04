@@ -3,8 +3,9 @@
 ║           M E K U R I A   AI   A S S I S T A N T            ║
 ║              Comprehensive System Test Suite                 ║
 ╚══════════════════════════════════════════════════════════════╝
-Validates all 28 modules, core execution logic, memory persistence,
-security policies, orchestrator planning, and tool operations.
+Validates all 30 modules, core execution logic, memory persistence,
+security policies, orchestrator planning, tool operations, and
+Amharic language intelligence & tutoring subsystem.
 """
 
 import sys
@@ -17,9 +18,9 @@ if sys.platform == "win32":
     except Exception:
         pass
 
-print("=" * 65)
-print("  MEKURIA ULTIMATE SYSTEM TEST & VALIDATION SUITE")
-print("=" * 65)
+print("=" * 70)
+print("  MEKURIA ULTIMATE SYSTEM TEST & VALIDATION SUITE (WITH AMHARIC)")
+print("=" * 70)
 
 passed = 0
 failed = 0
@@ -43,8 +44,11 @@ modules = [
     "agents.computer_operator", "agents.file_manager_agent",
     "agents.research_agent", "agents.software_engineer", "agents.debugger",
     "agents.testing_agent", "agents.project_manager", "agents.automation_agent",
-    "agents.tutor_career_agent", "agents.web_browser_agent",
-    "skills.manager", "ui.console_dashboard"
+    "agents.tutor_career_agent", "agents.web_browser_agent", "agents.amharic_tutor_agent",
+    "skills.manager", "ui.console_dashboard",
+    "amharic.fidel", "amharic.vocabulary", "amharic.grammar",
+    "amharic.teacher", "amharic.translator", "amharic.coding_tutor",
+    "amharic.detector", "amharic.learning_memory"
 ]
 
 print("\n--- 1. Module Import Tests ---")
@@ -92,6 +96,7 @@ def test_skills():
     skills = skill_manager.get_skills_list()
     assert "weather" in skills
     assert "calculator" in skills
+    assert "amharic_lesson" in skills
 test_step("Plugin & Skill System", test_skills)
 
 def test_orchestrator():
@@ -99,14 +104,54 @@ def test_orchestrator():
     plan = orchestrator.understand_and_plan("Build a school management website")
     assert len(plan) >= 2
     assert any(p["agent"] == "software" for p in plan)
-test_step("Orchestrator Goal Decomposition", test_orchestrator)
+    am_plan = orchestrator.understand_and_plan("አማርኛ አስተምረኝ")
+    assert len(am_plan) >= 1
+    assert am_plan[0]["agent"] == "amharic"
+test_step("Orchestrator Goal Decomposition (English + Amharic)", test_orchestrator)
 
-print("\n" + "=" * 65)
+print("\n--- 3. Amharic Language Intelligence Tests ---")
+def test_amharic_fidel():
+    import amharic
+    assert "ሀ" in amharic.FIDEL_FAMILIES
+    lesson = amharic.get_fidel_lesson("ሀ")
+    assert "ሀ ሁ ሂ ሃ ሄ ህ ሆ" in lesson
+test_step("Amharic Fidel 7-Order Database", test_amharic_fidel)
+
+def test_amharic_teacher():
+    import amharic
+    lesson = amharic.amharic_teacher.generate_daily_lesson("Beginner")
+    assert "የዕለቱ የ15 ደቂቃ የአማርኛ ትምህርት" in lesson
+    quiz = amharic.amharic_teacher.generate_quiz()
+    assert "question" in quiz and "answer" in quiz
+test_step("Amharic 15-Minute Daily Lessons & Quizzes", test_amharic_teacher)
+
+def test_amharic_coding():
+    import amharic
+    exp = amharic.explain_coding_concept("variable")
+    assert "Variable" in exp and "ተለዋዋጭ" in exp
+test_step("Amharic Coding & Computer Science Education", test_amharic_coding)
+
+def test_amharic_detector():
+    import amharic
+    assert amharic.language_detector.detect_language("ሰላም መኩሪያ") == "amharic"
+    assert amharic.language_detector.detect_language("Hello Mekuria") == "english"
+    assert amharic.language_detector.detect_language("Mekuria ሰላም") == "mixed"
+    intent, _ = amharic.language_detector.parse_amharic_intent("ሰዓት ስንት ነው")
+    assert intent == "time"
+test_step("Ethiopic Unicode Detection & Amharic Intent Router", test_amharic_detector)
+
+def test_amharic_agent():
+    from agents.amharic_tutor_agent import amharic_tutor_agent
+    res = amharic_tutor_agent.run("ፊደል አስተምረኝ")
+    assert "content" in res
+test_step("Amharic Tutor Agent Execution", test_amharic_agent)
+
+print("\n" + "=" * 70)
 print(f"TEST RESULTS: {passed} PASSED | {failed} FAILED")
-print("=" * 65)
+print("=" * 70)
 
 if failed > 0:
     sys.exit(1)
 else:
-    print("ALL 34 TESTS AND SUB-MODULES PASSED WITH 100% SUCCESS!")
+    print("ALL TESTS AND AMHARIC INTELLIGENCE MODULES PASSED WITH 100% SUCCESS!")
     sys.exit(0)

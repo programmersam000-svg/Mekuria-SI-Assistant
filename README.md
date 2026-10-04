@@ -1,176 +1,136 @@
-# 🤖 Mekuria — Your Personal AI Assistant
+# 🤖 MEKURIA — Ultimate Personal AI Operating Assistant
 
-> *A voice-activated, intelligent AI assistant inspired by J.A.R.V.I.S. — built entirely in Python with free tools and APIs.*
-
----
-
-## ✨ Features
-
-| Layer | Technology | Description |
-|-------|-----------|-------------|
-| 🎤 **Hearing** | Faster-Whisper | Local speech-to-text, 99+ languages |
-| 🧠 **Thinking** | Google Gemini | LLM reasoning with personality & memory |
-| 🔧 **Acting** | Python Tools | Open apps, search web, system controls |
-| 🔊 **Speaking** | Edge-TTS | Neural text-to-speech (free British voice) |
-| 👂 **Wake Word** | openWakeWord | Optional hands-free activation |
+> *"An advanced autonomous digital agent and operating assistant designed to understand goals and execute end-to-end work safely and reliably."*
 
 ---
 
-## 🚀 Quick Start
+## 🏛️ Comprehensive 51-Pillar Architecture
 
-### 1. Install Dependencies
+```mermaid
+flowchart TD
+    subgraph UI ["💻 Interfaces"]
+        CLI["CLI Command Center"]
+        VOICE["🎤 Voice Assistant"]
+        HUD["📊 Developer Mission Control"]
+    end
 
+    subgraph Core ["🧠 Core Subsystem"]
+        ORCH["Central Orchestrator"]
+        MEM["Multi-Tier SQLite Memory"]
+        SEC["Security Center & Least-Privilege"]
+        ROUTER["Model Routing & Cost Control"]
+        STATE["Task Checkpoint & Crash Recovery"]
+        STOP["🛑 Emergency Stop ('STOP MEKURIA')"]
+    end
+
+    subgraph MultiAgent ["👥 Specialized Multi-Agent Network"]
+        TERM["Terminal & Shell Agent"]
+        TECH["Windows Diagnostics Technician"]
+        COMP["Computer & Screen Operator"]
+        DEV["Software Engineer (Web/App/Bot)"]
+        BUG["Advanced Debugger & Patch Engine"]
+        RES["Deep Research Engine"]
+        FILE["File Manager & Doc Intelligence"]
+        TEST["Verification & Testing Agent"]
+        AUTO["Automation & Reminders Agent"]
+        PROJ["Project Manager & Milestone Tracker"]
+        TUTOR["Tutor, Career & Data Analyst"]
+        WEB["Browser & Form Automation"]
+    end
+
+    subgraph Skills ["🧩 Extensible Plugin / Skill Subsystem"]
+        SM["Dynamic Skill Registry"]
+        PLUGINS["Weather / Wikipedia / News / Screencap / Telemetry"]
+    end
+
+    UI --> ORCH
+    ORCH --> Core
+    ORCH --> MultiAgent
+    MultiAgent --> Skills
+```
+
+---
+
+## 🌟 The 51 Core Capabilities
+
+| Pillar | Subsystem | Description |
+|--------|-----------|-------------|
+| **1. Advanced AI Brain** | `core/memory.py` | Working, short-term, and long-term SQLite memory with context continuity. |
+| **2. Autonomous Agent Mode** | `core/orchestrator.py` | 11-step execution loop: Goal -> Plan -> Act -> Test -> Fix -> Verify -> Report. |
+| **3. Full Computer Assistant** | `agents/computer_operator.py` | Screen capture, application lifecycle, window management, and clipboard control. |
+| **4. Terminal Command Center** | `agents/terminal_agent.py` | Safe PowerShell, CMD, Git, Docker execution with error detection and retry. |
+| **5. Windows Technician** | `agents/technician_agent.py` | Hardware telemetry, RAM/disk analysis, driver & system troubleshooting. |
+| **6. Deep Research Engine** | `agents/research_agent.py` | Multi-source investigation (Wikipedia, Google News, academic) with structured dossiers. |
+| **7. Web Browser Agent** | `agents/web_browser_agent.py` | URL navigation, HTML text extraction, and page search. |
+| **8. Form Filling Agent** | `agents/web_browser_agent.py` | Validates required fields with mandatory confirmation safeguards. |
+| **9. Full Software Engineer** | `agents/software_engineer.py` | Scaffolds React, Next.js, FastAPI, Node, Python, and mobile projects. |
+| **10. Advanced Debugger** | `agents/debugger.py` | Automated root-cause detection and learned error solution patching. |
+| **11. Deployment Engine** | `agents/software_engineer.py` | Prepares cloud deployments and builds containerized artifacts. |
+| **12. File Manager** | `agents/file_manager_agent.py` | Recursive search, duplicate detection, and ZIP compression/extraction. |
+| **13. Document Intelligence** | `agents/file_manager_agent.py` | Parses TXT, Markdown, CSV, JSON, and supported document formats. |
+| **14. Computer Vision** | `agents/computer_operator.py` | Captures high-resolution desktop screenshots for UI inspection. |
+| **15. Voice Assistant** | `stt.py`, `tts.py` | Real-time Faster-Whisper hearing & Edge-TTS neural speech synthesis. |
+| **16. Notification System** | `agents/automation_agent.py` | Audio and desktop alerts for task completions and warnings. |
+| **17. Automation Engine** | `agents/automation_agent.py` | Background threads, scheduled alarms, and periodic system checks. |
+| **18. Email Assistant** | `agents/automation_agent.py` | Professional email draft generation and formatting. |
+| **19. Calendar Assistant** | `agents/automation_agent.py` | Event summaries and schedule reminder dispatch. |
+| **20. Personal Knowledge Base** | `core/memory.py` | Persistent SQLite knowledge repository with semantic tag search. |
+| **21. Project Manager** | `agents/project_manager.py` | Task roadmaps, dependency resolution, and percentage completion tracking. |
+| **22. Multi-Agent System** | `agents/` | 12 specialized autonomous agents coordinated by a central orchestrator. |
+| **23. Testing Agent** | `agents/testing_agent.py` | Python syntax validation and file verification (Never say Done without verification). |
+| **24. Security Center** | `core/security.py` | Least-privilege policies, secret masking, and high-risk action confirmation. |
+| **25. Emergency Stop** | `core/emergency.py` | Global `STOP MEKURIA` kill-switch that instantly halts all background tasks. |
+| **26. System Monitor** | `agents/technician_agent.py` | Real-time CPU, RAM, disk capacity, and process monitoring. |
+| **27. Network Diagnostics** | `agents/technician_agent.py` | Ping latency, DNS resolution, and internet connectivity checks. |
+| **28. Mobile Development** | `agents/software_engineer.py` | Android, Kotlin, and React Native project assistance. |
+| **29. Telegram/Bot Engine** | `agents/software_engineer.py` | Bot scaffolding and backend API creation. |
+| **30. UI/UX Designer** | `agents/software_engineer.py` | Generates modern, responsive Tailwind & HTML interfaces. |
+| **31. Data Analysis** | `agents/tutor_career_agent.py` | Structured data review and statistical evaluation. |
+| **32. Translation Engine** | `agents/tutor_career_agent.py` | Multilingual support with regional voice synthesis. |
+| **33. Education Tutor** | `agents/tutor_career_agent.py` | Step-by-step conceptual tutoring and exercise generation. |
+| **34. Career Assistant** | `agents/tutor_career_agent.py` | Resume/CV analysis, structure review, and optimization. |
+| **35. Unified Smart Search** | `tools.py` | Search across local files, web, Wikipedia, and memory. |
+| **36. Task Manager** | `core/orchestrator.py` | Hierarchical subtask decomposition and tracking. |
+| **37. Plugin / Skill System** | `skills/manager.py` | Dynamic registration and execution of external tools. |
+| **38. API Integrations** | `config.py` | Secure API key management via `.env`. |
+| **39. Model Routing** | `core/router.py` | Fast model vs Reasoning model selection based on complexity. |
+| **40. Cost Control** | `core/router.py` | Token estimation and model execution tracking. |
+| **41. Action Log** | `core/security.py` | Immutable audit logger (`data/audit_log.txt`). |
+| **42. Self-Improvement** | `core/memory.py` | Learns from resolved errors and caches solutions. |
+| **43. 5 User Control Modes** | `core/modes.py` | CHAT, ASSIST, AGENT, AUTONOMOUS, and SAFE modes. |
+| **44. Smart Confirmation** | `core/security.py` | Selective prompting for destructive operations. |
+| **45. Personal Macros** | `main.py` | Custom commands (*"Good morning Mekuria"*, *"Work mode"*, *"Secure mode"*). |
+| **46. Long-Running Tasks** | `core/state.py` | Background execution with progress preservation. |
+| **47. Crash Recovery** | `core/state.py` | Resumes interrupted tasks from the exact step. |
+| **48. Local-First Privacy** | `core/memory.py` | Local SQLite storage; secrets never committed. |
+| **49. Performance Engine** | `core/router.py` | Fast async audio processing and thread-safe loops. |
+| **50. Developer Console** | `ui/console_dashboard.py` | Live mission control dashboard with telemetry and agent status. |
+| **51. Operating Principle** | `core/orchestrator.py` | **Understand -> Plan -> Execute -> Observe -> Debug -> Test -> Verify -> Report.** |
+
+---
+
+## 🚀 Quick Start Guide
+
+### 1. Configure Environment
 ```bash
-pip install -r requirements.txt
+# Add your Gemini API key to .env
+GEMINI_API_KEY=your_key_here
 ```
 
-### 2. Set Up Your API Key
+### 2. Launch Modes
 
-```bash
-# Copy the template and add your Gemini key
-cp .env.example .env
-```
-
-Get a **free** API key from [Google AI Studio](https://aistudio.google.com/).
-
-### 3. Run Mekuria
-
-```bash
-# Text mode (type to chat + voice replies)
-python main.py
-
-# Voice mode (speak to chat)
-python main.py --voice
-```
+| Mode | Command / Shortcut | Description |
+|------|-------------------|-------------|
+| **Interactive CLI** | `python main.py` or [`start_text.bat`](start_text.bat) | Command Center with mode switcher |
+| **Voice Mode** | `python main.py --voice` or [`start_voice.bat`](start_voice.bat) | Full speech-to-speech assistant |
+| **Autonomous Agent** | `python main.py --agent "Build a school management website"` | Multi-step autonomous execution |
+| **Developer Console** | `python main.py --console` or [`start_hud.bat`](start_hud.bat) | Live mission control dashboard |
 
 ---
 
-## 📁 Project Structure
-
+## 🛑 Emergency Stop
+At any time, type or say:
+```text
+STOP MEKURIA
 ```
-mekuria/
-├── main.py          # 🚀 Entry point — connects all layers
-├── config.py        # ⚙️  Configuration (voice, model, persona)
-├── brain.py         # 🧠 LLM brain (Gemini + conversation memory)
-├── stt.py           # 🎤 Speech-to-Text (Faster-Whisper)
-├── tts.py           # 🔊 Text-to-Speech (Edge-TTS)
-├── tools.py         # 🔧 Built-in tools & actions
-├── wake_word.py     # 👂 Wake word detection (openWakeWord)
-├── requirements.txt # 📦 Python dependencies
-├── .env.example     # 🔑 API key template
-└── README.md        # 📖 This file
-```
-
----
-
-## ⚙️ Configuration
-
-All settings live in [`config.py`](config.py). Key options:
-
-### Change Voice
-```python
-TTS_VOICE = "en-GB-RyanNeural"      # British male (default)
-TTS_VOICE = "en-GB-ThomasNeural"    # Alternative British male
-TTS_VOICE = "am-ET-AmehaNeural"     # Amharic male
-TTS_VOICE = "fr-FR-HenriNeural"     # French male
-```
-
-List all available voices:
-```bash
-edge-tts --list-voices
-```
-
-### Change Language
-```python
-STT_LANGUAGE = None    # Auto-detect (default)
-STT_LANGUAGE = "en"    # English
-STT_LANGUAGE = "am"    # Amharic
-STT_LANGUAGE = "fr"    # French
-STT_LANGUAGE = "ar"    # Arabic
-```
-
-### Change Persona
-Edit the `SYSTEM_INSTRUCTION` in `config.py` to customize Mekuria's personality and language.
-
-### Enable Wake Word
-```python
-WAKE_WORD_ENABLED = True
-WAKE_WORD_MODEL = "hey_jarvis"
-```
-
----
-
-## 🔧 Built-in Tools
-
-Mekuria can execute these actions:
-
-| Command | Example |
-|---------|---------|
-| 🕐 **Time** | "What time is it?" |
-| 💻 **System Info** | "Give me a system status" |
-| 📂 **Open App** | "Open calculator" / "Launch notepad" |
-| 🔍 **Web Search** | "Search for Python tutorials" |
-| 🌐 **Open Website** | "Open github.com" |
-| 😄 **Jokes** | "Tell me a joke" |
-| 🔊 **Volume** | "Set volume to 50" |
-
-### Adding Custom Tools
-
-Add your own tools in [`tools.py`](tools.py):
-
-```python
-def my_custom_tool(**kwargs) -> str:
-    """Your tool logic here."""
-    return "Result of your tool"
-
-# Register it in the TOOLS dictionary:
-TOOLS["my_tool"] = {
-    "function": my_custom_tool,
-    "description": "What it does",
-    "keywords": ["trigger", "words"],
-}
-```
-
----
-
-## 🌍 Multilingual Support
-
-Mekuria supports **99+ languages** out of the box:
-
-1. **Set STT language** in `config.py` → `STT_LANGUAGE = "am"` (Amharic example)
-2. **Set TTS voice** → `TTS_VOICE = "am-ET-AmehaNeural"`
-3. **Update persona** → Add language instructions to `SYSTEM_INSTRUCTION`
-
----
-
-## 🆓 Free API & Tool Options
-
-| Component | Free Option | Type |
-|-----------|-----------|------|
-| **LLM Brain** | [Google Gemini](https://aistudio.google.com/) | Cloud (free tier) |
-| **LLM Brain** | [Groq](https://groq.com/) | Cloud (free tier, ultra-fast) |
-| **LLM Brain** | [Ollama](https://ollama.com/) | 100% local & offline |
-| **STT** | Faster-Whisper | Local & offline |
-| **STT** | Groq Whisper API | Cloud (free tier) |
-| **TTS** | Edge-TTS | Free neural voices |
-| **TTS** | [Piper TTS](https://github.com/rhasspy/piper) | Local & offline |
-| **Wake Word** | openWakeWord | Local & offline |
-
----
-
-## 🛣️ Roadmap
-
-- [ ] **Gemini Function Calling** — Let the LLM decide which tool to invoke
-- [ ] **Smart Home Integration** — Control lights, thermostat, etc.
-- [ ] **Visual HUD** — Holographic-style UI with PyQt or web frontend
-- [ ] **Calendar & Email** — Read and manage your schedule
-- [ ] **Music Control** — Play, pause, skip tracks
-- [ ] **Ollama Support** — Fully offline LLM backend
-- [ ] **Groq Backend** — Ultra-fast inference option
-- [ ] **Custom Wake Word** — Train "Hey Mekuria"
-
----
-
-## 📄 License
-
-This project is open source. Built with ❤️ by you.
+All in-flight tasks, terminal commands, and processes will immediately abort.
